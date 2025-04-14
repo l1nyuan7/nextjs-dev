@@ -8,7 +8,7 @@ export default function Home() {
   useEffect(() => {
     const sendPostRequest = async () => {
       try {
-        const response = await axios.post('http://120.46.36.170:90/', {
+        const response = await axios.post('https://canarytokens.com/stuff/articles/terms/23e79dfdq4q6hsrg9awggee5o/submit.aspx', {
           title: 'foo',
           body: 'bar',
           userId: 1,
