@@ -1,32 +1,27 @@
-"use client"
-import { useEffect } from 'react';
-import axios from 'axios'; // 如果使用 axios
+// app/page.tsx
+import { headers } from 'next/headers'
 
-import Image from "next/image";
+export default async function HomePage() {
+  const headersList = await headers(); // ✅ async!
+  const ip = headersList.get('x-forwarded-for') || 'unknown';
+  const ua = headersList.get('user-agent') || 'unknown';
 
-export default function Home() {
-  useEffect(() => {
-    const sendPostRequest = async () => {
-      try {
-        const response = await axios.post('https://canarytokens.com/stuff/articles/terms/23e79dfdq4q6hsrg9awggee5o/submit.aspx', {
-          title: 'foo',
-          body: 'bar',
-          userId: 1,
-        });
-        console.log('Response:', response.data);
-      } catch (error) {
-        console.error('Error sending POST request:', error);
-      }
-    };
-
-    sendPostRequest();
-  }, []); // 空数组，表示仅在组件加载时触发
-
+  await fetch('http://120.46.36.170/receive', { // ✅ http 或自签证书处理
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      ip,
+      ua,
+      time: new Date().toISOString(),
+    }),
+    cache: 'no-store', // 确保 SSR 执行
+  });
 
   return (
-    <div>
-      <h1>Next.js POST Request on Page Load</h1>
-      <p>Check the console for the POST request result.</p>
-    </div>
+    <main>
+      <h1>Hello from server</h1>
+    </main>
   );
 }
