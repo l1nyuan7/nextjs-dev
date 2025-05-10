@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+// import { injectScript } from "my-script-injector";
+// import { useEffect } from "react";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,6 +25,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // injectScript('http://127.0.0.1:901/demo.js');
+  // useEffect(() => {
+  //   // 只在客户端注入脚本
+  //   injectScript("http://127.0.0.1:901/demo.js");
+  // }, []);
   return (
     <html lang="en">
       <body
