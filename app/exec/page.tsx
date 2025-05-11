@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 export default function ExecPage() {
+  console.log("1212121212121");
   const [cmd, setCmd] = useState('whoami');
   const [result, setResult] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
