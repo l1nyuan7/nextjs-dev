@@ -1,9 +1,10 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { NextResponse, NextRequest } from 'next/server';
 
-const filePath = path.join('./', 'vercel-test.txt');
+const filePath = path.join('/tmp', 'vercel-test.txt');
 
-export async function GET(request) {
+export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const write = searchParams.get('write');
 
