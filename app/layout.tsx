@@ -25,11 +25,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // injectScript('http://127.0.0.1:901/demo.js');
-  // useEffect(() => {
-  //   // 只在客户端注入脚本
-  //   injectScript("http://127.0.0.1:901/demo.js");
-  // }, []);
+
   return (
     <html lang="en">
       <body
