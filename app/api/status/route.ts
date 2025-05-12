@@ -3,6 +3,7 @@ import path from 'path';
 import { NextResponse, NextRequest } from 'next/server';
 
 const filePath = path.join('/tmp', 'vercel-test.txt');
+console.log(filePath);
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
